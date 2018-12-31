@@ -1,0 +1,21 @@
+- apt_repository:
+    repo: ppa:canonical-hwe-team/powertop
+  register: apt_ppa_powertop
+- apt:
+    update_cache: yes
+  when: apt_ppa_powertop.changed
+- apt:
+    pkg:
+      - laptop-mode-tools
+      - powertop
+    state: present
+
+- template:
+    src: laptop-mode/{{ ansible_distribution_release }}/laptop-mode.conf
+    dest: /etc/laptop-mode/laptop-mode.conf
+    mode: 0644
+  register: laptop_mode_conf
+- service:
+    name: laptop-mode
+    state: restarted
+  when: laptop_mode_conf.changed

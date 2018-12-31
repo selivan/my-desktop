@@ -1,0 +1,17 @@
+- name: create lightdm configuration directory
+  file:
+    path: /etc/lightdm/lightdm.conf.d
+    state: directory
+    recurse: yes
+
+- name: install script to add display resolution mode 1600x900
+  template:
+    src: lightdm/add-resolution.sh
+    dest: /etc/lightdm/add-resolution.sh
+    mode: 0755
+
+- name: install lightdm configuration to add display resolution mode 1600x900
+  template:
+    src: lightdm/lightdm.conf.d/50-display-setup-script.conf
+    dest: /etc/lightdm/lightdm.conf.d/50-display-setup-script.conf
+    mode: 0644

@@ -1,0 +1,82 @@
+apt_repositories_ppa:
+  - repo: ppa:ansible/ansible
+  - repo: ppa:git-core/ppa
+  - repo: ppa:jaap.karssenberg/zim
+  - repo: ppa:jtaylor/keepass
+  - repo: ppa:nextcloud-devs/client
+  - repo: ppa:remmina-ppa-team/remmina-next
+  - repo: ppa:wireshark-dev/stable
+  - repo: ppa:rvm/smplayer
+  - repo: ppa:deki/firejail
+  - repo: ppa:caffeine-developers/ppa
+
+apt_repositories:
+  # VirtualBox
+  - repo: deb http://download.virtualbox.org/virtualbox/debian xenial contrib
+    filename: virtualbox-oracle
+    key_file: apt_keys/oracle_vbox_2016.gpg.txt
+  # VSCode
+  - repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
+    filename: vscode
+    key_file: apt_keys/microsoft.gpg.txt
+  # Vagrant
+  # https://vagrant-deb.linestarve.com/
+  - repo: deb https://vagrant-deb.linestarve.com/ any main
+    filename: wolfgang42-vagrant
+    key_keyserver: hkp://keyserver.ubuntu.com:80
+    key_id: AD319E0F7CFFA38B4D9F6E55CE3F3DE92099F7A4
+  # Docker
+  # https://docs.docker.com/install/linux/docker-ce/debian/
+  - repo: "deb [arch=amd64] https://download.docker.com/linux/debian \
+   {{ ansible_distribution_release }} stable"
+    filename: 
+    key_url: https://download.docker.com/linux/debian/gpg
+
+packages:
+  ### System
+  - apt-transport-https
+  - gnupg2
+  ### Console tools
+  - tmux
+  - htop
+  - atool
+  - mc
+  - mtr-tiny
+  ### Desktop
+  - arandr
+  # Caffeine - tray application to prevent sleep mode
+  - caffeine
+  - seahorse
+  - zim
+  - keepass2
+  - nextcloud-client
+  - firejail
+  - firejail-profiles
+  # Media
+  - audacious
+  - smplayer
+  - youtube-dl
+  # Browser
+  - firefox
+  - chromium-browser
+  - thunderbird
+  # Java
+  - default-jre
+  # Mono
+  - mono-runtime
+  ### Development
+  - git
+  - git-man
+  - tig
+  - git-sh
+  - ansible
+  - remmina
+  - remmina-plugin-rdp
+  - wireshark-qt
+  - meld
+  - vagrant
+  - virtualbox-6.0
+  - docker-ce
+  - docker-ce-cli
+  # VSCode
+  - code
