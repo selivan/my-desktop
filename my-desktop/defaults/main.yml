@@ -42,6 +42,7 @@ packages:
   - atool
   - mc
   - mtr-tiny
+  - ncdu
   ### Desktop
   - arandr
   # Caffeine - tray application to prevent sleep mode
