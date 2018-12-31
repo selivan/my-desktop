@@ -1,4 +1,5 @@
 - apt repositories and packages
+- Unity desktop specific
 - laptop specific
     - powertop
     - laptop-mode-tools

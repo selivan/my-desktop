@@ -48,7 +48,20 @@
   loop: "{{ apt_repositories }}"
   when: item.key_file is defined
 
+- name: remove packages
+  apt:
+    pkg: "{{ packages_remove }}"
+    state: absent
+
 - name: install packages
   apt:
     pkg: "{{ packages }}"
     state: present
+
+- name: Unity Desktop specific things
+  import_tasks: desktop-unity.yml
+  when: desktop_type == 'unity'
+
+- name: disable services
+  service: name="{{ item }}" enabled=no status=stopped
+  loop: "{{ services_disable }}"

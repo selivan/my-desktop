@@ -32,6 +32,18 @@ apt_repositories:
     filename: 
     key_url: https://download.docker.com/linux/debian/gpg
 
+desktop_type: unity
+
+services_disable:
+  - avahi-daemon.service
+  - avahi-daemon.socket
+
+packages_remove:
+  - zeitgeist-core
+  - zeitgeist-datahub
+  - tomboy
+  #- webbrowser-app
+
 packages:
   ### System
   - apt-transport-https
@@ -71,6 +83,7 @@ packages:
   - tig
   - git-sh
   - ansible
+  - python3-pip
   - remmina
   - remmina-plugin-rdp
   - wireshark-qt

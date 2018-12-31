@@ -1,0 +1,5 @@
+- name: install tweak tools
+  apt:
+    pkg:
+      - unity-tweak-tool
+      - compizconfig-settings-manager
