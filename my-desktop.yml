@@ -1,7 +1,12 @@
 - hosts: localhost
-  become: yes
+  become: no
+  gather_facts: no
   tasks:
     - debug:
         msg: "USAGE: ansible-playbook -vD my-desktop.yml --ask-become-pass"
+
+- hosts: localhost
+  become: yes
+  tasks:
     - import_role:
         name: my-desktop

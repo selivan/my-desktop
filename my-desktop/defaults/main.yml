@@ -76,7 +76,11 @@ packages:
   - meld
   - vagrant
   - virtualbox-6.0
-  - docker-ce
-  - docker-ce-cli
+  #- docker-ce
+  #- docker-ce-cli
   # VSCode
   - code
+
+laptop_mode_autosuspend_blacklist:
+  # A4tech mouse
+  - "09da:c10a"

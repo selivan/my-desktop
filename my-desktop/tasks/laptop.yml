@@ -15,7 +15,14 @@
     dest: /etc/laptop-mode/laptop-mode.conf
     mode: 0644
   register: laptop_mode_conf
+- lineinfile:
+    path: /etc/laptop-mode/conf.d/runtime-pm.conf
+    create: yes # create file if it does not already exist
+    regexp: ^AUTOSUSPEND_RUNTIME_DEVID_BLACKLIST=
+    line: "AUTOSUSPEND_RUNTIME_DEVID_BLACKLIST=\"{{ laptop_mode_autosuspend_blacklist | join(' ') }}\""
+  register: laptop_mode_conf_blacklist
+    
 - service:
     name: laptop-mode
     state: restarted
-  when: laptop_mode_conf.changed
+  when: laptop_mode_conf.changed or laptop_mode_conf_blacklist.changed
