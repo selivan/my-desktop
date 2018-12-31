@@ -1,0 +1,8 @@
+- apt repositories and packages
+- laptop specific
+    - powertop
+    - laptop-mode-tools
+        - exclude some USB devices(mouse)
+- device specific
+    - Lenovo YOGA 900 13ISK
+        - add missing display resolution for lightdm
