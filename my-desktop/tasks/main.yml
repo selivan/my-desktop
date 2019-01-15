@@ -58,6 +58,19 @@
     pkg: "{{ packages }}"
     state: present
 
+- name: get status of required snap packages
+  shell: snap list "{{ item }}"
+  loop: "{{ snap_packages }}"
+  register: snap_packages_check
+  failed_when: no
+  changed_when: snap_packages_check.rc != 0
+  check_mode: no
+
+- name: install required snap packages
+  shell: snap install "{{ item.item }}"
+  loop: "{{ snap_packages_check.results }}"
+  when: snap_packages_check is changed and item.rc != 0
+
 - name: Unity Desktop specific things
   import_tasks: desktop-unity.yml
   when: desktop_type == 'unity'

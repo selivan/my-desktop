@@ -1,3 +1,10 @@
+Using:
+
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+ansible-playbook -vD my-desktop.yml --ask-become-pass
+
 - apt repositories and packages
 - Unity desktop specific
 - laptop specific

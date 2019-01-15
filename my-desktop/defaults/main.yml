@@ -48,10 +48,12 @@ packages:
   ### System
   - apt-transport-https
   - gnupg2
+  - snapd
   ### Console tools
   - tmux
   - htop
   - atool
+  - p7zip-full
   - mc
   - mtr-tiny
   - ncdu
@@ -87,6 +89,7 @@ packages:
   - remmina
   - remmina-plugin-rdp
   - wireshark-qt
+  - tshark
   - meld
   - vagrant
   - virtualbox-6.0
@@ -94,6 +97,11 @@ packages:
   #- docker-ce-cli
   # VSCode
   - code
+
+snap_packages:
+  - pycharm-community
+  #- insomnia
+  - solitaire
 
 laptop_mode_autosuspend_blacklist:
   # A4tech mouse
