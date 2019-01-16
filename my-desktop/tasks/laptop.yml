@@ -26,3 +26,11 @@
     name: laptop-mode
     state: restarted
   when: laptop_mode_conf.changed or laptop_mode_conf_blacklist.changed
+
+# https://help.ubuntu.com/16.04/ubuntu-help/power-hibernate.html
+# https://askubuntu.com/a/1038856/25924
+- name: install poliykti configuration to enable hibernation
+  template: src={{ item }} dest=/etc/{{ item }} mode=0644
+  loop:
+    - polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+  
