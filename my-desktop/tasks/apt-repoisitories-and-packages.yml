@@ -1,0 +1,50 @@
+- name: add apt keys from keyservers
+  apt_key:
+    keyserver: "{{ item.key_keyserver }}"
+    id: "{{ item.key_id }}"
+  loop: "{{ apt_repositories }}"
+  when: item.key_keyserver is defined
+
+- name: add apt keys from urls
+  apt_key:
+    url: "{{ item.key_url }}"
+  loop: "{{ apt_repositories }}"
+  when: item.key_url is defined
+
+- name: add apt keys from keyfiles
+  apt_key:
+    data: "{{ lookup('file', item.key_file) }}"
+  loop: "{{ apt_repositories }}"
+  when: item.key_file is defined
+
+- name: add apt repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    filename: "{{ item.filename }}"
+    mode: 0644
+    update_cache: no
+  loop: "{{ apt_repositories }}"
+  register: apt_repositories_add
+
+- name: add apt ppa repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    mode: 0644
+    update_cache: no
+  loop: "{{ apt_repositories_ppa }}"
+  register: apt_repositories_ppa_add
+
+- name: update apt cache if required
+  apt:
+    update_cache: yes
+  when: apt_repositories_add is changed or apt_repositories_ppa_add is changed
+
+- name: remove packages
+  apt:
+    pkg: "{{ packages_remove }}"
+    state: absent
+
+- name: install packages
+  apt:
+    pkg: "{{ packages }}"
+    state: present

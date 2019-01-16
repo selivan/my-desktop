@@ -26,82 +26,11 @@
   include_tasks: lenovo-yoga-900-13ISK.yml
   when: dmidecode_system_version.stdout == "Lenovo YOGA 900-13ISK"
 
-- name: add apt keys from keyservers
-  apt_key:
-    keyserver: "{{ item.key_keyserver }}"
-    id: "{{ item.key_id }}"
-  loop: "{{ apt_repositories }}"
-  when: item.key_keyserver is defined
+- name: apt repoisitories and packages
+  include_tasks: apt-repoisitories-and-packages.yml
 
-- name: add apt keys from urls
-  apt_key:
-    url: "{{ item.key_url }}"
-  loop: "{{ apt_repositories }}"
-  when: item.key_url is defined
-
-- name: add apt keys from keyfiles
-  apt_key:
-    data: "{{ lookup('file', item.key_file) }}"
-  loop: "{{ apt_repositories }}"
-  when: item.key_file is defined
-
-- name: add apt repositories
-  apt_repository:
-    repo: "{{ item.repo }}"
-    filename: "{{ item.filename }}"
-    mode: 0644
-    update_cache: no
-  loop: "{{ apt_repositories }}"
-  register: apt_repositories_add
-
-- name: add apt ppa repositories
-  apt_repository:
-    repo: "{{ item.repo }}"
-    mode: 0644
-    update_cache: no
-  loop: "{{ apt_repositories_ppa }}"
-  register: apt_repositories_ppa_add
-
-- name: update apt cache if required
-  apt:
-    update_cache: yes
-  when: apt_repositories_add is changed or apt_repositories_ppa_add is changed
-
-- name: remove packages
-  apt:
-    pkg: "{{ packages_remove }}"
-    state: absent
-
-- name: install packages
-  apt:
-    pkg: "{{ packages }}"
-    state: present
-
-- name: get status of snap packages to install
-  shell: snap list "{{ item }}"
-  loop: "{{ snap_packages }}"
-  register: snap_packages_check
-  failed_when: no
-  changed_when: snap_packages_check.rc != 0
-  check_mode: no
-
-- name: install required snap packages
-  shell: snap install "{{ item.item }}"
-  loop: "{{ snap_packages_check.results }}"
-  when: snap_packages_check is changed and item.rc != 0
-
-- name: get status of snap packages to remove
-  shell: snap list "{{ item }}"
-  loop: "{{ snap_packages_remove }}"
-  register: snap_packages_remove_check
-  failed_when: no
-  changed_when: snap_packages_remove_check.rc == 0
-  check_mode: no
-
-- name: remove required snap packages
-  shell: snap remove "{{ item.item }}"
-  loop: "{{ snap_packages_remove_check.results }}"
-  when: snap_packages_remove_check is changed and item.rc != 0
+- name: snap packages
+  include_tasks: snap-packages.yml
 
 # Desktop tasks
 - name: Unity Desktop specific things
