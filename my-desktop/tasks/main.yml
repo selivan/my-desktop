@@ -103,6 +103,7 @@
   loop: "{{ snap_packages_remove_check.results }}"
   when: snap_packages_remove_check is changed and item.rc != 0
 
+# Desktop tasks
 - name: Unity Desktop specific things
   import_tasks: desktop-unity.yml
   when: desktop_type == 'unity'
