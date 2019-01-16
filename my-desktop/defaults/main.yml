@@ -12,7 +12,7 @@ apt_repositories_ppa:
 
 apt_repositories:
   # VirtualBox
-  - repo: deb http://download.virtualbox.org/virtualbox/debian xenial contrib
+  - repo: "deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     filename: virtualbox-oracle
     key_file: apt_keys/oracle_vbox_2016.gpg.txt
   # VSCode
