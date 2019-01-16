@@ -84,6 +84,7 @@ packages:
   - git-man
   - tig
   - git-sh
+  - curl
   - ansible
   - python3-pip
   - remmina
