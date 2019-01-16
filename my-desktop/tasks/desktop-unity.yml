@@ -5,9 +5,7 @@
       - unity
       - unity-control-center
       - unity-lens-applications
-      - unity-lens-files
       - unity-settings-daemon
-      - unity-system-compositor
       # Tweak tools
       - unity-tweak-tool
       - compizconfig-settings-manager
