@@ -9,6 +9,7 @@ apt_repositories_ppa:
   - repo: ppa:rvm/smplayer
   - repo: ppa:deki/firejail
   - repo: ppa:caffeine-developers/ppa
+  - repo: ppa:qbittorrent-team/qbittorrent-stable
 
 apt_repositories:
   # VirtualBox
@@ -75,6 +76,7 @@ packages:
   - firefox
   - chromium-browser
   - thunderbird
+  - qbittorrent
   # Java
   - default-jre
   # Mono
