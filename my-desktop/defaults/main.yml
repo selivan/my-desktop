@@ -101,7 +101,8 @@ packages:
 snap_packages:
   - pycharm-community
   #- insomnia
-  - solitaire
+
+snap_packages_remove: []
 
 laptop_mode_autosuspend_blacklist:
   # A4tech mouse
