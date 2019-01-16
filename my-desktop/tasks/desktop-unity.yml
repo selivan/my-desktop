@@ -6,6 +6,7 @@
       - unity-control-center
       - unity-lens-applications
       - unity-settings-daemon
+      - unity-session
       # Tweak tools
       - unity-tweak-tool
       - compizconfig-settings-manager
