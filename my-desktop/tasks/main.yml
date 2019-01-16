@@ -1,12 +1,13 @@
 - name: update apt repositories if necessary
   apt: update_cache=yes cache_valid_time=3600
-- name: install packages
+- name: install laptop-detect and dmidecode
   apt:
     pkg:
       - laptop-detect
       - dmidecode
     state: present
 
+# Laptop specific tasks
 - name: run laptop-detect
   shell: laptop-detect
   changed_when: False
@@ -15,19 +16,15 @@
   include_tasks: laptop.yml
   when: laptop_detect.rc == 0
 
+# Device specific tasks
 - name: run dmidecode
   shell: dmidecode --string system-version
   changed_when: False
   register: dmidecode_system_version
+- debug: var=dmidecode_system_version.stdout
 - name: Lenovo YOGA 900-13ISK specific things
   include_tasks: lenovo-yoga-900-13ISK.yml
-  when: dmidecode_system_version.stdout == 'Lenovo YOGA 900-13ISK'
-
-- name: add apt ppa repositories
-  apt_repository:
-    repo: "{{ item.repo }}"
-    update_cache: no
-  loop: "{{ apt_repositories_ppa }}"
+  when: dmidecode_system_version.stdout == "Lenovo YOGA 900-13ISK"
 
 - name: add apt keys from keyservers
   apt_key:
@@ -47,6 +44,28 @@
     data: "{{ lookup('file', item.key_file) }}"
   loop: "{{ apt_repositories }}"
   when: item.key_file is defined
+
+- name: add apt repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    filename: "{{ item.filename }}"
+    mode: 0644
+    update_cache: no
+  loop: "{{ apt_repositories }}"
+  register: apt_repositories_add
+
+- name: add apt ppa repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    mode: 0644
+    update_cache: no
+  loop: "{{ apt_repositories_ppa }}"
+  register: apt_repositories_ppa_add
+
+- name: update apt cache if required
+  apt:
+    update_cache: yes
+  when: apt_repositories_add is changed or apt_repositories_ppa_add is changed
 
 - name: remove packages
   apt:
@@ -89,5 +108,5 @@
   when: desktop_type == 'unity'
 
 - name: disable services
-  service: name="{{ item }}" enabled=no status=stopped
+  service: name="{{ item }}" enabled=no state=stopped
   loop: "{{ services_disable }}"
