@@ -60,6 +60,11 @@ packages:
   - ncdu
   ### Desktop
   - arandr
+  # Network
+  - network-manager-openvpn
+  - network-manager-openvpn-gnome
+  - network-manager-ssh
+  - network-manager-ssh-gnome
   # Caffeine - tray application to prevent sleep mode
   - caffeine
   - seahorse
