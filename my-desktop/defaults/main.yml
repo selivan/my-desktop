@@ -60,6 +60,7 @@ packages:
   - ncdu
   ### Desktop
   - arandr
+  - calibre # e-book reader
   - gpicview # Image viewer
   - speedcrunch # Convenient and powerful calculator
   - caffeine # Caffeine - tray application to prevent sleep mode
