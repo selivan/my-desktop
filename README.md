@@ -7,7 +7,7 @@ sudo apt install ansible
 ansible-playbook -vD my-desktop.yml --ask-become-pass
 ```
 
-- sudo: run system upgrade commands without password
+- sudo: %sudo group can run safe apt upgrade commands without password
 - apt repositories and packages
 - Unity desktop specific
 - laptop specific
