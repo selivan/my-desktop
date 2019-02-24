@@ -13,8 +13,6 @@
     - src: sudoers.d/sudo_group
       dest: /etc/sudoers.d/sudo_group
 
-- fail:
-
 - name: update apt repositories if necessary
   apt: update_cache=yes cache_valid_time=3600
 - name: install laptop-detect and dmidecode
