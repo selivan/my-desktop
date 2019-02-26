@@ -1,3 +1,7 @@
+desktop_type: unity
+
+hibernation_setup: yes
+
 apt_repositories_ppa:
   - repo: ppa:ansible/ansible
   - repo: ppa:git-core/ppa
@@ -32,8 +36,6 @@ apt_repositories:
    {{ ansible_distribution_release }} stable"
     filename: docker
     key_url: https://download.docker.com/linux/debian/gpg
-
-desktop_type: unity
 
 services_disable:
   - avahi-daemon.service
