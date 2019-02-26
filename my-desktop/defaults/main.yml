@@ -67,6 +67,7 @@ packages:
   - seahorse
   - zim
   - keepass2
+  - xdotool # Used for keepass auto-type
   - nextcloud-client
   - firejail
   - firejail-profiles
