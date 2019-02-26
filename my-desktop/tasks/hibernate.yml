@@ -1,0 +1,32 @@
+# https://help.ubuntu.com/16.04/ubuntu-help/power-hibernate.html
+# https://askubuntu.com/a/1038856/25924
+- name: install poliykti configuration to enable hibernation
+  template: src={{ item }} dest=/etc/{{ item }} mode=0644
+  loop:
+    - polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+
+- name: check if /swapfile is used
+  shell: swapon --show --noheadings | grep ^/swapfile
+  changed_when: no
+  register: swapfile
+
+- name: get root device
+  shell: mount | grep 'on / ' | cut -d' ' -f1
+  changed_when: no
+  register: root_device
+
+- name: get swapfile ofset
+  shell: filefrag -v /swapfile | sed -n 4p | tr -s ' ' | cut -d' ' -f5 | tr -d .
+  changed_when: no
+  register: swapfile_offset
+
+- name: update kernel parameters in grub config to enable hibernation
+  lineinfile:
+    path: /etc/default/grub
+    regexp: ^GRUB_CMDLINE_LINUX_DEFAULT=
+    line: "GRUB_CMDLINE_LINUX_DEFAULT=\"{{ kernel_parameters_default }} resume={{ root_device.stdout }} resume_offset={{ swapfile_offset.stdout }}\""
+  register: grub_config
+
+- name: update grub
+  shell: update-grub
+  when: grub_config is changed
