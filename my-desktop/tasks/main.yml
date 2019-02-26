@@ -22,6 +22,11 @@
       - dmidecode
     state: present
 
+# Hibernation
+- name: enable hibernation
+  include_tasks: hibernate.yml
+  when: hibernation_setup
+
 # Laptop specific tasks
 - name: run laptop-detect
   shell: laptop-detect
@@ -40,6 +45,8 @@
 - name: Lenovo YOGA 900-13ISK specific things
   include_tasks: lenovo-yoga-900-13ISK.yml
   when: dmidecode_system_version.stdout == "Lenovo YOGA 900-13ISK"
+
+# Software
 
 - name: apt repoisitories and packages
   include_tasks: apt-repoisitories-and-packages.yml
