@@ -115,6 +115,9 @@ snap_packages:
 
 snap_packages_remove: []
 
+# default kernel parameters, not used for recovery
+kernel_parameters_default: quiet splash
+
 laptop_mode_autosuspend_blacklist:
   # A4tech mouse
   - "09da:c10a"
