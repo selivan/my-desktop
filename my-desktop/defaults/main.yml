@@ -97,6 +97,7 @@ packages:
   - tig
   - git-sh
   - curl
+  - jq
   - ansible
   - python3-pip
   - remmina
@@ -108,12 +109,12 @@ packages:
   - virtualbox-6.0
   #- docker-ce
   #- docker-ce-cli
-  # VSCode
-  - code
+  - code # VSCode
 
 snap_packages:
   - pycharm-community
   #- insomnia
+  - libreoffice # there is ppa, but not that fresh: https://launchpad.net/~libreoffice/+archive/ubuntu/ppa
 
 snap_packages_remove: []
 
