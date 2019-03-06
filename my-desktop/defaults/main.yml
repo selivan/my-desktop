@@ -105,6 +105,7 @@ packages:
   - wireshark-qt
   - tshark
   - meld
+  - kdiff3-qt
   - vagrant
   - virtualbox-6.0
   #- docker-ce
