@@ -60,6 +60,8 @@ packages:
   - mc
   - mtr-tiny
   - ncdu
+  - acl
+  - attr
   ### Desktop
   - arandr
   - calibre # e-book reader
