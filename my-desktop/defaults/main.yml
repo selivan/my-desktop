@@ -60,6 +60,7 @@ packages:
   - mc
   - mtr-tiny
   - ncdu
+  - rsync
   - acl
   - attr
   ### Desktop
