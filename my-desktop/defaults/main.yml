@@ -14,6 +14,7 @@ apt_repositories_ppa:
   - repo: ppa:deki/firejail
   - repo: ppa:caffeine-developers/ppa
   - repo: ppa:qbittorrent-team/qbittorrent-stable
+  - repo: ppa:libreoffice/ppa
 
 apt_repositories:
   # VirtualBox
@@ -114,11 +115,13 @@ packages:
   #- docker-ce
   #- docker-ce-cli
   - code # VSCode
+  # LibreOffice
+  - libreoffice
 
 snap_packages:
   - pycharm-community
   #- insomnia
-  - libreoffice # there is ppa, but not that fresh: https://launchpad.net/~libreoffice/+archive/ubuntu/ppa
+  #- libreoffice # there is ppa, but not as fresh as snap packages: https://launchpad.net/~libreoffice/+archive/ubuntu/ppa
 
 snap_packages_remove: []
 
