@@ -98,9 +98,10 @@ packages:
   ### Development
   - git
   - git-man
-  - tig
   - git-sh
+  - tig
   - curl
+  - sshfs
   - jq
   - ansible
   - python3-pip
