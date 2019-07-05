@@ -8,10 +8,10 @@
     group: root
     backup: yes
   loop:
-    - src: sudoers
-      dest: /etc/sudoers
     - src: sudoers.d/sudo_group
       dest: /etc/sudoers.d/sudo_group
+    - src: sudoers
+      dest: /etc/sudoers
 
 - name: update apt repositories if necessary
   apt: update_cache=yes cache_valid_time=3600
