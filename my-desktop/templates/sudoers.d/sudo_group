@@ -1,4 +1,4 @@
-Cmnd_Alias APTUPGRADE = /usr/bin/apt update, /usr/bin/apt dist-upgrade, /usr/bin/apt dist-upgrade -y, /usr/bin/apt clean
+Cmnd_Alias APTUPGRADE = /usr/bin/apt update, /usr/bin/apt dist-upgrade, /usr/bin/apt dist-upgrade -y, /usr/bin/apt clean, /usr/bin/apt autoremove, /usr/bin/apt autoremove --purge
 
 %sudo ALL=(ALL:ALL) ALL
 %sudo ALL= NOPASSWD: APTUPGRADE
