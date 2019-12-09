@@ -6,7 +6,7 @@ apt_repositories_ppa:
   - repo: ppa:ansible/ansible
   - repo: ppa:git-core/ppa
   - repo: ppa:jaap.karssenberg/zim
-  - repo: ppa:jtaylor/keepass
+#   - repo: ppa:jtaylor/keepass
   - repo: ppa:nextcloud-devs/client
   - repo: ppa:remmina-ppa-team/remmina-next
   - repo: ppa:wireshark-dev/stable
@@ -15,6 +15,7 @@ apt_repositories_ppa:
   - repo: ppa:caffeine-developers/ppa
   - repo: ppa:qbittorrent-team/qbittorrent-stable
   - repo: ppa:libreoffice/ppa
+  - repo: ppa:phoerious/keepassxc
 
 apt_repositories:
   # VirtualBox
@@ -72,7 +73,7 @@ packages:
   - caffeine # Caffeine - tray application to prevent sleep mode
   - seahorse
   - zim
-  - keepass2
+  - keepassxc
   - xdotool # Used for keepass auto-type
   - nextcloud-client
   - firejail
