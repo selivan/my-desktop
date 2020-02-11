@@ -59,6 +59,8 @@ packages:
   - htop
   - atool
   - p7zip-full
+  - p7zip-rar
+  - unrar
   - mc
   - mtr-tiny
   - ncdu
@@ -71,7 +73,7 @@ packages:
   - gpicview # Image viewer
   - speedcrunch # Convenient and powerful calculator
   - caffeine # Caffeine - tray application to prevent sleep mode
-  - seahorse
+  - seahorse # GUI for Gnome Keyring
   - zim
   - keepassxc
   - xdotool # Used for keepass auto-type
@@ -95,7 +97,7 @@ packages:
   # Java
   - default-jre
   # Mono
-  - mono-runtime
+  #- mono-runtime
   ### Development
   - git
   - git-man
