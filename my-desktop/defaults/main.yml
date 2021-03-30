@@ -16,6 +16,7 @@ apt_repositories_ppa:
   - repo: ppa:qbittorrent-team/qbittorrent-stable
   - repo: ppa:libreoffice/ppa
   - repo: ppa:phoerious/keepassxc
+  - repo: ppa:pbek/qownnotes
 
 apt_repositories:
   # VirtualBox
@@ -76,7 +77,8 @@ packages:
   - seahorse # GUI for Gnome Keyring
   - zim
   - keepassxc
-  - xdotool # Used for keepass auto-type
+  - xdotool # Used for keepassxc auto-type
+  - qownnotes
   - nextcloud-client
   - firejail
   - firejail-profiles
@@ -88,7 +90,7 @@ packages:
   # Media
   - audacious
   - smplayer
-  - youtube-dl
+  # - youtube-dl # most recent version in pypi local packages
   # Browser
   - firefox
   - chromium-browser
